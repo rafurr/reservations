@@ -16,9 +16,9 @@ To run Apollo server `cd server`
 node server.js
 ```
 
-🚀 Server ready at http://localhost:4000/
+🚀 Server ready at http://localhost:4000/graphql
 
-and go to `http://localhost:4000/`
+and go to `http://localhost:4000/graphql`
 
 ## Client
 
