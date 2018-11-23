@@ -1,15 +1,12 @@
 # Reservations
 
-# React-Server-Side-Rendering
-
-A Full-Stack Next.js app using Node.js, Express, GraphQL, and Apollo Server on the backend.
+A full stack Next.js app using React, Redux, Material-ui, Node.js, Express, GraphQL, and Apollo Server.
 
 ## Installation
 
-1. `git clone http://github.com/rafurr/Reservations`
-2. `cd client` & `cd server`
-3. To run client `npm run dev` and to run server `node server.js`
-   3-old. To run client `npm start` and to run server `npm run dev`
+1. `git clone http://github.com/rafurr/reservations`
+2. `cd client` & `npm install` & `npm run dev`
+3. `cd server` & `npm install` & `node server.js`
 
 ## Server
 
@@ -33,22 +30,16 @@ npm run dev
 
 and go to `http://localhost:3000/`
 
-## Flow
-
-```
-flow check
-or
-npm run flow
-```
-
 ## Built with
 
 - React (v16)
-- Flow
+- Redux
+- Material-ui
+- Next.js
+- Node.js
+- Express
 - Apollo Server
 - GraphQL
-- Next.js
-- Mongoose
 
 ## License
 
