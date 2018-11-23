@@ -1,0 +1,7 @@
+.reservation {
+  border-bottom: 1px solid lightgray;
+}
+.reservation_list {
+  padding: 0 !important;
+  border: 1px solid lightgray;
+}

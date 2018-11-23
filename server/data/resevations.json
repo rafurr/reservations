@@ -1,0 +1,17 @@
+[
+  {
+    "id": "reservation-0",
+    "name": "Robert Furr",
+    "hotelName": "Alpharetta Hilton"
+  },
+  {
+    "id": "reservation-1",
+    "name": "Jack Bear",
+    "hotelName": "Miami Hilton"
+  },
+  {
+    "id": "reservation-2",
+    "name": "Thomas Earl",
+    "hotelName": "New York Hilton"
+  }
+]
