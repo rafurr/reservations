@@ -1,35 +1,54 @@
 import React, { Component } from "react";
+
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
+
 import { compose, graphql } from "react-apollo";
+
+import { setName, setHotelName, toggleFetch } from "../reducers/view";
+import { increment, decrement } from "../reducers/counter";
+
 import { ADD_RESERVATION } from "../queries/queries";
 
 import Button from "@material-ui/core/Button";
+import TextField from "@material-ui/core/TextField";
+
+const mapStateToProps = state => ({
+  count: state.counter.count,
+  name: state.view.name,
+  hotelName: state.view.hotelName
+});
+
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(
+    {
+      increment,
+      decrement,
+      setName,
+      setHotelName,
+      toggleFetch
+    },
+    dispatch
+  );
 
 class ReservationForm extends Component {
-  constructor() {
-    super();
-    this.state = {
-      name: "",
-      hotelName: ""
-    };
-  }
   handleNameChange = e => {
-    this.setState({ name: e.target.value });
+    this.props.setName(e.target.value);
   };
 
   handleHotelNameChange = e => {
-    this.setState({ hotelName: e.target.value });
+    this.props.setHotelName(e.target.value);
   };
 
   handleSubmit = e => {
-    const { addReservation } = this.props;
-    e.preventDefault();
-    if (!this.state.name.trim()) {
+    const { addReservation, toggleFetch, name, hotelName } = this.props;
+    e.preventDefault(); //prevent full refresh
+    const reservation = { name: name.trim(), hotelName: hotelName.trim() };
+    if (!reservation.name || !reservation.name) {
       return;
     }
-    addReservation({
-      variables: { name: this.state.name, hotelName: this.state.hotelName }
-    });
-    this.setState({ name: "", hotelName: "" });
+    addReservation({ variables: reservation });
+    toggleFetch();
   };
 
   render() {
@@ -40,19 +59,41 @@ class ReservationForm extends Component {
             this.handleSubmit(e);
           }}
         >
-          <input onChange={this.handleNameChange} value={this.state.name} />
-          <input
-            onChange={this.handleHotelNameChange}
-            value={this.state.hotelName}
-          />
-          <Button type="submit" variant="outlined" color="primary">
-            Add Reservation
-          </Button>
+          <div>
+            <TextField
+              id="guest-name"
+              value={this.props.name}
+              onChange={this.handleNameChange}
+              label="Guest Name"
+              placeholder="Enter Guest Name"
+              margin="normal"
+              autoComplete="off"
+            />
+          </div>
+          <div>
+            <TextField
+              id="hotel-name"
+              value={this.props.hotelName}
+              onChange={this.handleHotelNameChange}
+              label="Hotel Name"
+              placeholder="Enter Hotel Name"
+              margin="normal"
+              autoComplete="off"
+            />
+          </div>
+          <div>
+            <Button type="submit" variant="outlined" color="primary">
+              Add Reservation
+            </Button>
+          </div>
         </form>
       </div>
     );
   }
 }
-export default compose(graphql(ADD_RESERVATION, { name: "addReservation" }))(
-  ReservationForm
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(
+  compose(graphql(ADD_RESERVATION, { name: "addReservation" }))(ReservationForm)
 );

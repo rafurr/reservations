@@ -13,12 +13,6 @@ export default class MyDocument extends Document {
               "minimum-scale=1, width=device-width, height=device-height"
             }
           />
-
-          <link
-            rel="stylesheet"
-            href="https://bootswatch.com/4/litera/bootstrap.min.css"
-          />
-          <link rel="stylesheet" href="/_next/static/style.css" />
         </Head>
         <body>
           <Main />

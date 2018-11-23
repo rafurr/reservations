@@ -4,8 +4,13 @@ body {
   padding: 0;
   font-family: sans-serif;
   text-align: center !important;
+  background: #eeeeee;
 }
 
-.hello {
+.layout {
+  background: red;
+}
+
+.footer {
   color: red;
 }

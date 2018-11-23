@@ -1,7 +1,26 @@
+.top_message {
+  color: red;
+  margin-top: 1rem;
+}
+
+.container {
+  background: #eeeeee;
+}
 .reservation {
   border-bottom: 1px solid lightgray;
 }
 .reservation_list {
-  padding: 0 !important;
+  /* padding: 0 !important; */
   border: 1px solid lightgray;
+  background: #eeeeee;
+  margin-top: 1rem;
+  padding: 15px;
+  overflow-y: scroll;
+  max-height: 300px;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }

@@ -6,6 +6,9 @@ import css from "./Reservations.css";
 
 import { GET_RESERVATIONS } from "../queries/queries";
 
+import TitleBar from "./TitleBar";
+import ReservationForm from "./ReservationForm";
+import ReservationsQuery from "./ReservationsQuery";
 import ReservationListItem from "./ReservationListItem";
 
 const ReservationList = props => {
@@ -15,13 +18,24 @@ const ReservationList = props => {
 
   let items = reservations.getReservations;
 
-  var listClass = classNames("col-xs-12 col-sm-4", css.reservation_list);
+  // var listClass = classNames(css.reservation_list);
 
   return (
-    <div className={listClass}>
-      {items.map(item => {
-        return <ReservationListItem key={item.id} item={item} />;
-      })}
+    <div className={css.container}>
+      <TitleBar />
+      <div className={css.top_message}>Under Construction</div>
+      <ReservationForm />
+      <ReservationsQuery />
+      <div className={css.reservation_list}>
+        {items.map(item => {
+          return <ReservationListItem key={item.id} item={item} />;
+        })}
+      </div>
+      {true && (
+        <footer className={css.footer}>
+          &copy; ACME Reservation Inc. 2018. All rights Reserved
+        </footer>
+      )}
     </div>
   );
 };
